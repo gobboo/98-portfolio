@@ -41,5 +41,5 @@ export default defineEventHandler(async event => {
 
   // JWT
 
-  return { accessToken: jwt.sign({ _id: user._id }, config.jwtSecret, { expiresIn: '7d' }) };
+  return { accessToken: jwt.sign({ _id: user._id }, config.JWT_SECRET, { expiresIn: '7d' }) };
 })

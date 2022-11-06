@@ -12,13 +12,13 @@ export default defineEventHandler(async (event) => {
 
   const config = useRuntimeConfig();
   // Check JWT
-  const isValid = jwt.verify(authorization, config.jwtSecret);
+  const isValid = jwt.verify(authorization, config.JWT_SECRET);
 
   if (!isValid) {
     return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized', data: 'Could not verify user authenticity, please relogin.' }))
   }
 
-  const decodedUser = jwt.decode(authorization, config.jwtSecret);
+  const decodedUser = jwt.decode(authorization, config.JWT_SECRET);
   
   const user = await User.findOne({ _id: decodedUser._id });
 
