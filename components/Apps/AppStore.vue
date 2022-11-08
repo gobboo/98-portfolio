@@ -12,7 +12,7 @@
 					<p class="text-xs">{{ project.description }}</p>
 
 					<div class="flex gap-2 mt-4">
-						<img v-for="(tech, index) in project.tech" :key="index" class="h-5" style="image-rendering: pixelated;"
+						<img v-for="(tech, index) in project.tech" :key="index" :title="tech.charAt(0).toUpperCase() + tech.substring(1, tech.length)" class="h-5" style="image-rendering: pixelated;"
 							:alt="tech" :src="`/img/icons/software/${tech}.png`" />
 					</div>
 				</div>
@@ -66,6 +66,22 @@ const portfolio = [
 		preview: 'portfolio',
 		link: 'https://portfolio.gobbo.gg',
 		source: 'https://github.com/gobboo/98-portfolio',
-	}
+	},
+	{
+		name: 'CatchAll | Hardware & Backend',
+		description: 'A Project I made in College, CatchAll is software that runs on a Raspberry PI and uses a Camera to detect people at your door. Similar to Ring, however it uses AI to detect faces and recongise them. If a person is added to your doorbells known people, it\'ll send their name to your phone or if they aren\'t then it\'ll say unknown. (Not my Image)',
+		tech: ['python', 'javascript', 'mariadb', 'bootstrap'],
+		preview: 'catchall',
+		link: '',
+		source: 'https://github.com/gobboo/CatchAll',
+	},
+	{
+		name: 'Valoryst | Full-Stack',
+		description: 'A Valorant Statistics & Visualisation website. Using Canvas, a friend and I built a visualisation tool of players matches, they can see where players were during a match, who killed who and where they died. The website also has a statistics section where users can see their stats and compare them to other players. Uses Oauth 2.0 for authentication.',
+		tech: ['vue', 'typescript', 'mongodb', 'tailwindcss'],
+		preview: 'valoryst',
+		link: 'https://map-parse-ts.vercel.app',
+		source: '',
+	},
 ]
 </script>
