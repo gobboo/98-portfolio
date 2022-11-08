@@ -4,7 +4,7 @@
 		<div v-for="(project, index) in portfolio" :key="index" class="flex gap-12 my-4">
 			<div class="flex flex-1">
 				<ul class="tree-view mr-2 w-48 p-0">
-					<img class="w-full h-full" :src="`/img/previews/${project.preview}.png`" />
+					<img class="w-full" :src="`/img/previews/${project.preview}.png`" />
 				</ul>
 
 				<div class="max-w-sm">
