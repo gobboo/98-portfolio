@@ -2,10 +2,10 @@
 module.exports = {
   content: [],
   theme: {
+    fontFamily: {
+      sans: ['Pixelated MS Sans Serif', 'Tahoma'],
+    },
     extend: {
-      fontFamily: {
-        sans: ['Pixelated MS Sans Serif', 'Tahoma'],
-      },
       colors: {
         "background": "#008080"
       }
