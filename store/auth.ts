@@ -38,6 +38,12 @@ export const useAuth = defineStore('auth', {
       this.accessToken = accessToken;
 
       await this.fetchUser();
+    },
+
+    async logout () {
+      this.isAuthed = false
+      this.user = {}
+      this.token = ''
     }
   }
 })
