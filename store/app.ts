@@ -7,17 +7,18 @@ export interface Application {
 	metadata: Record<string, any>;
 }
 
+// TODO: Move to Database
 export const applications = [
-	{
-		id: 'documentview',
-		name: 'Document Viewer',
-		icon: 'document-0',
-		metadata: {}
-	},
 	{
 		id: 'mywork',
 		name: 'My Work',
 		icon: 'directory_open_file_mydocs-4',
+		metadata: {}
+	},
+	{
+		id: 'documentview',
+		name: 'Document Viewer',
+		icon: 'document-0',
 		metadata: {}
 	},
 ];

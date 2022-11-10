@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="p-8">
-			<AppIcon v-for="(app, index) in applications" :key="index" :id="app.id" :name="app.name" :icon="app.icon"/>
+			<AppIcon v-for="(app, index) in applications" :key="index" class="my-4" :id="app.id" :name="app.name" :icon="app.icon"/>
 
 			<MyWork v-if="isOpen('mywork')" />
 			<DocumentApp v-if="isOpen('documentview')" :document-name="applicationData('documentview').metadata.documentName" />
