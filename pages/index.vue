@@ -1,30 +1,28 @@
 <template>
 	<div>
 		<div class="p-8">
-			<AppIcon v-for="(app, index) in applications" :key="index" :name="app.name" :icon="app.icon"
-				@dblclick="taskbar.OpenApplication(app)" />
+			<AppIcon v-for="(app, index) in applications" :key="index" :id="app.id" :name="app.name" :icon="app.icon"/>
 
-			<AppStore v-if="taskbar && taskbar.openApplications && taskbar.openApplications.includes(applications[0])"
-				@close="taskbar.CloseApplication(applications[0])" @minimize="taskbar.MinimizeApplication(applications[0])" />
+			<MyWork v-if="isOpen('mywork')" />
+			<DocumentApp v-if="isOpen('documentview')" :document-name="applicationData('documentview').metadata.documentName" />
 		</div>
 
-		<Taskbar ref="taskbar" class="absolute bottom-0" />
+		<Taskbar class="absolute bottom-0" />
 	</div>
 </template>
 
 <script lang="ts" setup>
-import AppIcon from '@/components/Apps/AppIcon.vue';
-import AppStore from '@/components/Apps/AppStore.vue';
+import AppIcon from '~/components/Apps/Icons/AppIcon.vue';
+import MyWork from '~/components/Apps/MyWork.vue';
+import DocumentApp from '~/components/Apps/DocumentApp.vue';
 
-const taskbar = ref(null);
+import { useOS, applications } from '~~/store/app';
 
-const applications = [
-	{
-		name: 'My Work',
-		icon: 'directory_open_file_mydocs-4',
-		ref: ref(null),
-	},
-]
+const OS = useOS();
+
+const isOpen = (id) => OS.openApplications.some((app) => app.id === id);
+
+const applicationData = (id) => OS.openApplications.find((app) => app.id === id);
 
 definePageMeta({
 	title: 'My Computer',

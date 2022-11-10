@@ -1,5 +1,5 @@
 <template>
-	<div ref="container" class="window absolute -trans" style="left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); ">
+	<div ref="container" class="window absolute -trans max-h-full" style="left: 50%; top: 50%; transform: translateX(-50%) translateY(-50%); ">
 		<div class="title-bar">
 			<div class="w-full h-full">
 				<div class="title-bar-text flex items-center" @mousedown="onMouseDown">
@@ -9,9 +9,9 @@
 			</div>
 
 			<div class="title-bar-controls">
-				<button aria-label="Minimize" @click="emit('minimize')"></button>
-				<button aria-label="Maximize" @click="emit('maximize')"></button>
-				<button aria-label="Close" @click="emit('close')"></button>
+				<button aria-label="Minimize" @click="OS.minimizeApplication()"></button>
+				<button aria-label="Maximize"></button>
+				<button aria-label="Close" @click="OS.closeApplication(id)"></button>
 			</div>
 		</div>
 		<div class="window-body">
@@ -23,6 +23,10 @@
 </template>
 
 <script lang="ts" setup>
+import { useOS } from '~~/store/app';
+
+
+const OS = useOS();
 
 const container = ref(null);
 const outlineContainer = ref(null);
@@ -30,10 +34,9 @@ const outlineContainer = ref(null);
 const clientX = ref(0);
 const clientY = ref(0);
 
-const emit = defineEmits(['close', 'minimize', 'maximize']);
-
 defineProps<
 	{
+		id: string;
 		name: string;
 		icon: string;
 	}

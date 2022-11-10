@@ -1,9 +1,8 @@
 <template>
-	<App name="My Work" icon="accesibility_window_abc" @close="emit('close')" @maximize="emit('maximize')"
-		@minimize="emit('minimize')">
+	<App id="mywork" name="My Work" icon="accesibility_window_abc">
 		<div v-for="(project, index) in portfolio" :key="index" class="flex gap-12 my-4">
 			<div class="flex flex-1">
-				<ul class="tree-view mr-2 w-48 p-0">
+				<ul class="tree-view h-fit mr-2 w-48 p-0">
 					<img class="w-full" :src="`/img/previews/${project.preview}.png`" />
 				</ul>
 
@@ -39,8 +38,6 @@
 
 <script lang="ts" setup>
 import App from '@/components/Apps/App.vue';
-
-const emit = defineEmits(['close', 'minimize', 'maximize']);
 
 const portfolio = [
 	{
@@ -78,7 +75,7 @@ const portfolio = [
 	{
 		name: 'Valoryst | Full-Stack',
 		description: 'A Valorant Statistics & Visualisation website. Using Canvas, a friend and I built a visualisation tool of players matches, they can see where players were during a match, who killed who and where they died. The website also has a statistics section where users can see their stats and compare them to other players. Uses Oauth 2.0 for authentication.',
-		tech: ['vue', 'typescript', 'mongodb', 'tailwindcss'],
+		tech: ['vue', 'typescript', 'mongodb', 'tailwind'],
 		preview: 'valoryst',
 		link: 'https://map-parse-ts.vercel.app',
 		source: '',
