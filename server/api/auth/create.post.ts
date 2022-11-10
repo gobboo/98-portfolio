@@ -12,8 +12,6 @@ import { hash } from 'bcrypt';
 
 import joi from 'joi';
 import validateData from '~~/server/validators';
-import { AccessKey } from '~~/server/db/AccessKey';
-
 
 const schema = joi.object({
   username: joi.string().alphanum().min(2).max(16).required(),
@@ -32,7 +30,7 @@ export default defineEventHandler(async event => {
 
   try {
     // Check if key is valid
-    const key = await AccessKey.findOne({ key: accessKey });
+    const key = null;
 
     if (!key) {
       return sendError(event, createError({ statusCode: 401, statusMessage: 'Unauthorized', data: 'Invalid Access Key' }))
