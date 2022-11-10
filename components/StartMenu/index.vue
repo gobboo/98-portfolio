@@ -62,12 +62,12 @@ const options = [
 			{
 				name: 'my_cv.pdf',
 				icon: 'file_lines-0',
-				onClick: openDocument('my_cv.docx')
+				onClick: () => openDocument('my_cv.docx')
 			},
 			{
 				name: 'NHS Recommendation.pdf',
 				icon: 'certificate_2-0',
-				onClick: openDocument('nhs_recommendation.pdf')
+				onClick: () => openDocument('nhs_recommendation.pdf')
 			},
 		],
 		onClick: () => { },
@@ -84,6 +84,7 @@ const options = [
 ]
 
 function openDocument(documentName: string) {
+	console.log('test')
 	OS.openApplication('documentview', { documentName });
 }
 
